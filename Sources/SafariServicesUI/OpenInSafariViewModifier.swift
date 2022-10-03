@@ -3,6 +3,15 @@ import SafariServices
 
 struct OpenURLInSafariViewModifier: ViewModifier {
     @State private var url: URL? = nil
+    private var isPresented: Binding<Bool> {
+        Binding {
+            url != nil
+        } set: { newValue in
+            if newValue == false {
+                url = nil
+            }
+        }
+    }
 
     private let configuration: SFSafariViewController.Configuration?
 
@@ -21,11 +30,10 @@ struct OpenURLInSafariViewModifier: ViewModifier {
                     return .systemAction(url)
                 }
             })
-            .sheet(isPresented: .constant(url != nil)) {
-                url = nil
-            } content: {
+            .fullScreenCover(isPresented: isPresented) {
                 if let url {
                     SafariView(url: url)
+                        .edgesIgnoringSafeArea(.all)
                 }
             }
 
