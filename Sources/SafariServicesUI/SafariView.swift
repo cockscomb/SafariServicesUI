@@ -4,10 +4,12 @@ import SafariServices
 public struct SafariView: UIViewControllerRepresentable {
     public typealias UIViewControllerType = SFSafariViewController
 
-    private let url: URL
-    private let configuration: SFSafariViewController.Configuration?
+    public typealias Configuration = SFSafariViewController.Configuration
 
-    public init(url: URL, configuration: SFSafariViewController.Configuration? = nil) {
+    private let url: URL
+    private let configuration: Configuration?
+
+    public init(url: URL, configuration: Configuration? = nil) {
         self.url = url
         self.configuration = configuration
     }

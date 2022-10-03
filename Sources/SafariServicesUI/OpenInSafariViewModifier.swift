@@ -1,5 +1,4 @@
 import SwiftUI
-import SafariServices
 
 struct OpenURLInSafariViewModifier: ViewModifier {
     @State private var url: URL? = nil
@@ -13,9 +12,9 @@ struct OpenURLInSafariViewModifier: ViewModifier {
         }
     }
 
-    private let configuration: SFSafariViewController.Configuration?
+    private let configuration: SafariView.Configuration?
 
-    init(configuration: SFSafariViewController.Configuration?) {
+    init(configuration: SafariView.Configuration?) {
         self.configuration = configuration
     }
 
@@ -41,7 +40,7 @@ struct OpenURLInSafariViewModifier: ViewModifier {
 }
 
 extension View {
-    public func openURLInSafariView(configuration: SFSafariViewController.Configuration? = nil) -> some View {
+    public func openURLInSafariView(configuration: SafariView.Configuration? = nil) -> some View {
         return modifier(OpenURLInSafariViewModifier(configuration: configuration))
     }
 }
