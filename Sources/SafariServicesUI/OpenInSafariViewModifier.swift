@@ -40,6 +40,9 @@ struct OpenURLInSafariViewModifier: ViewModifier {
 }
 
 extension View {
+    /// Open https or http URLs in SFSafariViewController
+    /// - Parameter configuration: SFSafariViewController configuration
+    /// - Returns: View
     public func openURLInSafariView(configuration: SafariView.Configuration? = nil) -> some View {
         return modifier(OpenURLInSafariViewModifier(configuration: configuration))
     }
