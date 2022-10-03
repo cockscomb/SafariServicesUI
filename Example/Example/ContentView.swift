@@ -9,6 +9,8 @@ struct ContentView: View {
             Link("Open in Safari", destination: appleDeveloper)
             Link("Open in SFSafariViewControlelr", destination: appleDeveloper)
                 .openURLInSafariView()
+            Text("Open in SFSafariViewControlelr with [Attributed String](https://developer.apple.com)")
+                .openURLInSafariView()
         }
     }
 }
