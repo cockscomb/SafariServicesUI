@@ -32,7 +32,7 @@ struct OpenURLInSafariViewModifier: ViewModifier {
             })
             .fullScreenCover(isPresented: isPresented) {
                 if let url {
-                    SafariView(url: url)
+                    SafariView(url: url, configuration: configuration)
                         .edgesIgnoringSafeArea(.all)
                 }
             }
