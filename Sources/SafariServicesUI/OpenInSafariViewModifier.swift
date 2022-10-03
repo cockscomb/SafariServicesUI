@@ -33,7 +33,7 @@ struct OpenURLInSafariViewModifier: ViewModifier {
 }
 
 extension View {
-    public func openURLInSafariView(configuration: SFSafariViewController.Configuration?) -> some View {
+    public func openURLInSafariView(configuration: SFSafariViewController.Configuration? = nil) -> some View {
         return modifier(OpenURLInSafariViewModifier(configuration: configuration))
     }
 }
