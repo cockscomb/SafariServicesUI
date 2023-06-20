@@ -24,8 +24,5 @@ let package = Package(
         .target(
             name: "SafariServicesUI",
             dependencies: []),
-        .testTarget(
-            name: "SafariServicesUITests",
-            dependencies: ["SafariServicesUI"]),
     ]
 )
