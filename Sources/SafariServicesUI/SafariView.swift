@@ -9,6 +9,7 @@ public struct SafariView: UIViewControllerRepresentable {
 
     private let url: URL
     private let configuration: Configuration?
+    @Environment(\.dismiss) private var dismiss
 
     public init(url: URL, configuration: Configuration? = nil) {
         self.url = url
@@ -22,9 +23,26 @@ public struct SafariView: UIViewControllerRepresentable {
         } else {
             safariViewController = SFSafariViewController(url: url)
         }
+        safariViewController.delegate = context.coordinator
         return safariViewController
     }
 
     public func updateUIViewController(_ uiViewController: SFSafariViewController, context: Context) {
+    }
+
+    public func makeCoordinator() -> Coordinator {
+        return Coordinator(self)
+    }
+
+    public class Coordinator: NSObject, SFSafariViewControllerDelegate {
+        let parent: SafariView
+
+        init(_ parent: SafariView) {
+            self.parent = parent
+        }
+
+        public func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+            parent.dismiss()
+        }
     }
 }
